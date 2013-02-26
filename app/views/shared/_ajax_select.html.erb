@@ -1,0 +1,19 @@
+<div id="<%= option_id %>" <%= option_style %> <%= option_class %> ></div>
+<% javascript_tag do  %>
+  combo = new dhtmlXCombo("<%= option_id -%>", "<%= name -%>", "<%= option_width -%>");
+<% end -%>
+<% if ajaxed -%>
+  <%= javascript_tag("combo.enableFilteringMode(true, \"#{option_path}\", true, false);") %>
+<% else -%>
+  <% javascript_tag do -%>
+    combo.loadXML("<%= option_path -%>");
+    combo.enableFilteringMode(true);
+  <% end -%>  
+<% end -%>
+<% if value.to_i > 0  %>
+  <% javascript_tag do %>
+    combo.setComboValue("<%= value -%>");
+    combo.setComboText("<%= value_text -%>");
+    combo.DOMelem_hidden_input2.value = "false";
+  <% end -%>
+<% end -%>

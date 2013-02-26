@@ -1,0 +1,33 @@
+- @meta = { :description => "Fallen Earth Items Database",:keywords => "item, items, schemetics, recipe, schematic, database, fallen earth"}
+- @section = 'items'
+
+#yui-main
+  .yui-b
+
+    -box do
+
+      %h3
+        = :item_db.l
+        %ul.subnav
+          %li= link_to :add_item.l, new_item_path
+
+        -#      %p.subtitle
+        -#        = feed_icon_tag :recent_items.l, all_items_path(:format => 'rss')
+        -#        = number_with_delimiter(Item.count)
+        -#        = :items.l
+
+      -alphabet_filter(Item.item_alphabet) do |letter, cnt|
+        -link_to(letter, item_filter_path(letter), :title => pluralize(cnt, 'Item'))  
+
+      = my_will_paginate @items, :show_info => false
+      = render :partial => 'items/items_table', :locals => {:items => @items}
+      = my_will_paginate @items
+
+.yui-b
+  -box do
+    %h3 &nbsp
+    -box :class => 'alt' do
+      %h3=:item_filters.l
+      =item_type_links
+      =javascript_tag("( function($) {$('#item_categories').tree(tree_settings); } )(jQuery);")
+

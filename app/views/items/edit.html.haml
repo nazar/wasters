@@ -1,0 +1,13 @@
+-@section = 'items'
+-box do
+  %h3= "#{:editing_item.l} - #{@item.title}"
+
+  = error_messages_for :item
+
+  - form_for(@item, :html => {:class => "MainForm", :multipart => true}) do |f|
+    = render :partial => 'form', :locals => {:form => f}
+    %p= submit_tag :update.l
+
+  = link_to :back.l, item_path(@item)
+
+=render :partial => 'items/behaviour'

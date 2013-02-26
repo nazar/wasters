@@ -1,0 +1,85 @@
+- @meta = { :description => "Fallen Earth Items Database",:keywords => "item, items, schematics, database, fallen earth"}
+- @section = 'items'
+
+#yui-main
+  .yui-b
+    -box :class => "hfeed" do
+      %h2=h(@item.title)
+      
+      %h3=:item_description.l
+      %div.clearfix
+        %div.item_icon=image_tag @item.icon.url unless @item.icon_file_name.blank?
+        =@item.description
+
+      -if @item.category == Item::ItemCatManualCraft
+        %h3 Crafting Manual Recipes
+        %div.crafting_recipes
+          =render :partial => 'item_links/links_table', :locals => {:item_links => @item_links, :qty_desc => 'Level'}
+
+      -unless @monsters.blank? && @quests.blank? && @merchants.blank? && @component_for_items.blank? 
+        %h3=:item_sources.l
+        %div#items-tabs.item-tabs
+          %ul
+            %li=link_to "#{:mobs.l} (#{@monsters.length})", '#tab-mob' unless @monsters.blank?
+            %li=link_to "#{:merchants.l} (#{@merchants.length})", '#tab-merchant' unless @merchants.blank?
+            %li=link_to "#{:nodes.l} (#{@quests.length})", '#tab-node' unless @nodes.blank?
+            %li=link_to "#{:mines.l} (#{@quests.length})", '#tab-mine' unless @mines.blank?
+            %li=link_to "#{:quests.l} (#{@quests.length})", '#tab-quest' unless @quests.blank?
+            %li=link_to "Components For (#{@item.component_for_items.count})", '#tab-component' unless @component_for_items.blank?  
+          -unless @monsters.blank?
+            %div#tab-mob
+              =render :partial => 'mobs/mobs_table', :locals => {:mobs => @monsters, :table_id => 'mob_table'}
+          -unless @merchants.blank?
+            %div#tab-merchant
+              =render :partial => 'mob_items/mob_items_mob_table', :locals => {:mobs => @merchants, :table_id => 'merchant_table', :qty_desc => 'Price'}
+          -unless @nodes.blank?
+            %div#tab-node
+              =render :partial => 'mob_items/mob_items_mob_table', :locals => {:mobs => @nodes, :table_id => 'node_table'}
+          -unless @mines.blank?
+            %div#tab-mine
+              =render :partial => 'mob_items/mob_items_mob_table', :locals => {:mobs => @mines, :table_id => 'mine_table'}
+          -unless @quests.blank?
+            %div#tab-quest
+              =render :partial => 'quests/quests_table', :locals => {:quests => @quests, :table_id => 'quest_table'}
+          -unless @component_for_items.blank?
+            %div#tab-component
+              =render :partial => 'items/items_table', :locals => {:items => @component_for_items}
+              %br
+              =will_paginate @component_for_items, {:param_name => 'items_page', :params => {:anchor => 'tab-component'}}
+              
+        =javascript_tag "(function($){ $('#items-tabs').tabs(); })(jQuery);"
+
+      = render :partial => 'items/schematics_block', :locals => {:schematics => @schematics[:assembley]} unless @schematics[:assembley].blank?
+
+    = render :partial => 'shared/object_comments', :locals => {:commentable => @item}
+
+.yui-b
+  -box do
+    - if admin_or_moderator? || @item.owner?(current_user)
+      %h3.signup Actions
+      -box :class => 'alt' do #TODO only for mods
+        %h3=link_to 'Edit Item', edit_item_path(@item)
+        %h3=link_to 'New Item', new_item_path
+        = render :partial => 'shared/signup_block'
+    - else
+      %h3 &nbsp    
+
+    -box :class => 'alt' do
+      %h3=:base_properties.l
+      =render :partial => 'items/properties', :locals => {:item => @item}
+    - unless (list = skills_list(@item)).blank?
+      -box :class => 'alt' do
+        %h3=:skills_requirement.l
+        =list
+    - unless (item_props = item_properties(@item)).blank?
+      -box :class => 'alt' do
+        =item_props
+    - unless (damages = damages_list(@item)).blank?
+      -box :class => 'alt' do
+        %h3=:weapon_damage.l
+        =damages
+    - unless @item.cached_tag_list.blank?
+      =render :partial => 'tags/tag_box', :locals => {:tags => @item.tag_counts}
+    -box :class => 'alt' do
+      %h3=:item_stats.l
+      =render :partial => 'items/stats', :locals => {:item => @item}    

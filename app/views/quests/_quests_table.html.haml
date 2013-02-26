@@ -1,0 +1,25 @@
+%table{:id => table_id ||= 'quests_table', :class => 'data_table quests_table'}
+  %tr
+    %th{:class => 'sortfirstasc'} Quest
+    %th="Type" if quests.first.respond_to?(:link_type)
+    %th Sector
+    %th{:title => 'Level'} LVL
+    %th Rating
+    %th AP
+    %th XP
+    %th{:title => 'Chips'} CP
+    %th{:title => 'Faction'} FA
+  - for quest in quests
+    %tr
+      %td= link_to h(quest.title), quest_path(quest)
+      %td= QuestItem.link_types[quest.link_type.to_i].humanize if quest.respond_to?(:link_type) && (quest.link_type.to_i > 0) 
+      %td= quest.sector_to_s
+      %td= quest.level
+      %td= quest.rating
+      %td= quest.ap
+      %td= quest.experience
+      %td= quest.chips
+      %td= quest.faction_to_s
+
+= javascript_tag "SortableTable.init('#{table_id}');"
+

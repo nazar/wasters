@@ -1,0 +1,19 @@
+- @meta = { :description => "Fallen Earth Bestiary Database",:keywords => "mob, mobs, bestiary, merchants, NPC, NPCs, database, fallen earth"}
+- @section = 'mobs'
+
+#yui-main
+  .yui-b
+    -box do
+      %h3
+        = :mob_db.l
+        %ul.subnav
+          %li= link_to :add_mob.l, new_mob_path
+
+      = my_will_paginate @mobs, :show_info => false
+      = render :partial => 'mobs/mobs_table', :locals => {:mobs => @mobs}
+      = my_will_paginate @mobs
+
+.yui-b
+  -box do
+    %h3 &nbsp
+    =render :partial => 'mobs/filters_box'

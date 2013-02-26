@@ -1,0 +1,59 @@
+- item_armour = setup_armour_stats(@item)
+- fields_for "item[item_stat_armour_attributes]", item_armour do |armour_form|
+  =armour_form.hidden_field :id
+  %table{:width => '100%', :class => 'properties'}
+    %tr
+      %td
+        %fieldset.properties
+          %legend=:primary_resists.l
+          =label_tag :slashing.l
+          =armour_form.text_field :slashing
+
+          =label_tag :piercing.l
+          =armour_form.text_field :piercing
+
+          =label_tag :crushing.l
+          =armour_form.text_field :crushing
+
+          =label_tag :ballistic.l
+          =armour_form.text_field :ballistic
+
+        %fieldset.properties
+          %legend=:secondary_resists.l
+          =label_tag :fire.l
+          =armour_form.text_field :fire
+
+          =label_tag :cold.l
+          =armour_form.text_field :cold
+      %td
+        %fieldset.properties
+          %legend=:tertiary_resists.l
+          =label_tag :acid.l
+          =armour_form.text_field :acid
+
+          =label_tag :radiation.l
+          =armour_form.text_field :radiation
+
+          =label_tag :poison.l
+          =armour_form.text_field :poison
+
+          =label_tag :sonic.l
+          =armour_form.text_field :sonic
+
+          =label_tag :electric.l
+          =armour_form.text_field :electric
+
+          =label_tag :psionic.l
+          =armour_form.text_field :psionic
+
+          =label_tag :disease.l
+          =armour_form.text_field :disease
+
+      %td
+        %fieldset
+          %legend Armour Slots
+          =armour_slot_check_boxes(item_armour)
+
+        %fieldset.properties.requirements
+          %legend=:item_requirements.l
+          =item_skill_tags(@item)

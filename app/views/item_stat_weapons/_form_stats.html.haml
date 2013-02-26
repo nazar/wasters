@@ -1,0 +1,55 @@
+- fields_for "item[item_stat_weapon_attributes]", @stat do |weapon_form|
+  =weapon_form.hidden_field :id
+  %table{:width => '100%', :class => 'properties'}
+    %tr
+      %td
+        %fieldset
+          %legend=:slot.l
+          =label_tag :slot.l
+          =weapon_form.select :slot, ItemStatWeapon.slots.sort{|a,b|a[1]<=>b[1]}.collect{|s|[s.last, s.first]}
+
+        %fieldset.properties
+          -weapon_types = order_key_value_hash(ItemStatWeapon.weapon_types)
+          %legend=:weapon_type.l
+          =label_tag :type.l
+          =weapon_form.select :weapon_type, weapon_types
+
+          =label_tag :sub_type.l
+          %div#weapon_sub_select=weapon_form.select :weapon_subtype, weapon_sub_type_options_for(@stat.weapon_type || weapon_types.first.last)
+
+        %fieldset.properties
+          %legend=:ammo.l
+          =label_tag :ammo_item.l
+          =weapon_form.select :ammo_item_id, options_for_select(items_select_hash, @stat.ammo_item_id)
+          - javascript_tag do
+            var combo=dhtmlXComboFromSelect("item_item_stat_weapon_attributes_ammo_item_id");
+            combo.enableFilteringMode(true);
+
+          =label_tag :ammo_size.l
+          =weapon_form.text_field :ammo
+
+      %td
+        %fieldset.properties
+          %legend=:properties.l
+
+          =label_tag :dps.l
+          =weapon_form.text_field :dps
+
+          =label_tag :delay.l
+          =weapon_form.text_field :delay
+
+          =label_tag :reload_stat.l
+          =weapon_form.text_field :reload_stat
+
+          =label_tag :max_range.l
+          =weapon_form.text_field :max_range
+
+      %td    
+        %fieldset.properties.requirements
+          %legend=:item_requirements.l
+          =item_skill_tags(@item)
+
+      %td
+        %fieldset.properties
+          %legend=:damage.l
+          =damages_tags(@item)            

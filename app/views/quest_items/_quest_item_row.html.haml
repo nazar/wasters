@@ -1,0 +1,4 @@
+%tr
+  %td= items_ajax_box("quest_items[#{quest_item.id}][item_id]", quest_item.item_id, quest_item.item_title)
+  %td= select_tag "quest_items[#{quest_item.id}][link_type]", options_for_select(order_key_value_hash(QuestItem.link_types), quest_item.link_type)
+  %td= text_field_tag "quest_items[#{quest_item.id}][qty]", quest_item.qty

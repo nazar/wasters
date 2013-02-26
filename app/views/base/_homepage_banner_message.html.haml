@@ -1,0 +1,29 @@
+#welcome
+  .yui-gc
+    .yui-u.first
+      -box do 
+        %h2
+          =:get_started_banner.l :site=>AppConfig.community_name
+        %p Sign up for a FREE account and start contributing the the Fallen Earth Community Database
+        %p Once you are a member you can:
+        %ul#member_actions
+          %li=link_to 'Add Mobs', mobs_path
+          %li=link_to 'Add Quests', quests_path
+          %li=link_to 'Write Articles', signup_path
+          %li=link_to 'Write Blogs', signup_path
+          %li=link_to 'Post on our Forums', forums_path
+          %li=link_to 'Meet Wastelanders', users_path
+          %li Comment against Items, Mobs, Quests and Wasterlander's profiles!
+          %li Upload photos
+    .yui-u
+      -if AppConfig.closed_beta_mode
+        -box do
+          ="#{AppConfig.community_name} is currently in closed beta. Please check back in a few days."
+      -else
+        -box do
+          %h2
+            =:homepage_banner_signup_prompt.l
+          %p
+            =:create_your_account.l
+          %h4
+            =link_to :sign_up.l, signup_path

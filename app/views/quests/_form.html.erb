@@ -1,0 +1,62 @@
+<fieldset>
+  <legend>Quest Details</legend>
+  <%= label_tag :title %>
+  <%= form.text_field :title %>
+
+  <%= label_tag :description_body, :quest_description.l %>
+  <%= form.text_area :description, :rows => 8 %>
+
+  <%= label_tag :objective_body, :quest_objective.l %>
+  <%= form.text_area :objective, :rows => 8 %>
+
+  <%= label_tag :level, :quest_level.l %>
+  <%= form.text_field :level %> <em>1 - 46</em>
+
+  <%= label_tag :sector, :quest_sector.l %>
+  <%= quest_sector_select %>
+
+  <%= label_tag :sector, :quest_giver.l %>
+  <%= quest_giver_select(@quest.quest_giver_id, @quest.quest_giver_name) %>
+
+  <%= label_tag :previous_quest, :previous_quest.l %>
+  <%= previous_quest_select(@quest, @previous_data) %>
+</fieldset>
+<table cellpadding="0" cellspacing="0" class='properties'>
+  <tr>
+    <td>
+      <fieldset class="properties">
+        <legend><%= :quest_rewards.l %></legend>
+        <%= label_tag :ap, :ap.l %>
+        <%= form.text_field :ap %>
+
+        <%= label_tag :chips, :chips.l %>
+        <%= form.text_field :chips %>
+
+        <%= label_tag :experience, :experience.l %>
+        <%= form.text_field :experience %>
+
+        <%= label_tag :faction, :faction.l %>
+        <%= form.text_field :faction %>
+
+        <%= label_tag :faction_type, :faction_type.l %>
+        <%= faction_type_select %>
+      </fieldset>
+    </td>
+    <td>
+      <fieldset class="properties">
+        <legend><%= :quest_items.l %></legend>
+        <% fields_for "quest[quest_items_attributes]", @stat do |items_form|  %>
+          <%= render :partial => 'quest_items/form', :locals => {:quest_items => @quest_items, :f => items_form} %>
+        <% end -%>  
+      </fieldset>
+    </td>
+  </tr>
+</table>
+
+<%= label_tag :tags, :tags.l %>
+<%= form.text_field :tag_list %> <em>comma separated keywords to additionally categorise this quest </em>
+
+<% javascript_tag do %>
+  qcombo=dhtmlXComboFromSelect("previous_quest");
+  qcombo.enableFilteringMode(true);
+<% end -%>

@@ -1,0 +1,10 @@
+%table#item_schematics{:cellspacing => 0, :cellpadding => 0}
+  %tr
+    %th Item
+    %th Qty
+  -sort_schematic_by_item(schematics).each do |schematic_array|
+    -schematic_id = schematic_array.first
+    -schematic = schematic_array.last
+    = render :partial => 'items/form_schematic', :locals => {:schematic => schematic, :schematic_id => schematic_id}
+  %tr#items_last_row &nbsp
+%p= link_to 'Add Item to Schematic', item_schematics_path, :id => 'add_item'

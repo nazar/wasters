@@ -1,0 +1,5 @@
+- for quest in quests
+  %dl.vcard
+    %dd.fn= link_to quest.title, quest_path(quest)
+    %dd
+      = truncate_words(quest.description, 10,  '...')

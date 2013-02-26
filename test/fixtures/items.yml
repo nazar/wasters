@@ -1,0 +1,77 @@
+gun1:
+  id: 1
+  title: "teh gun - mk1"
+  weight: 0.75
+  vendor_sell_price: 1.25
+
+knife:
+  id: 2
+  title: "teh knife"
+  weight: 0.15
+  vendor_sell_price: 0.25
+
+barrel:
+  id: 3
+  title: "gun barrel"
+  weight: 0.1
+  vendor_sell_price: 0.1
+
+trigger:
+  id: 4
+  title: "gun trigger"
+  weight: 0.1
+  vendor_sell_price: 0.1
+
+grip:
+  id: 5
+  title: "grip"
+  weight: 0.1
+  vendor_sell_price: 0.1
+
+wood:
+  id: 6
+  title: "wood"
+  weight: 0.05
+  vendor_sell_price: 0.01
+
+iron:
+  id: 7
+  title: "iron"
+  weight: 0.05
+  vendor_sell_price: 0.01
+
+knife2:
+  id: 8
+  title: "nasty knife"
+  weight: 0.1
+  vendor_sell_price: 0.05
+
+handle:
+  id: 9
+  title: "knife handle"
+  weight: 0.1
+  vendor_sell_price: 0.05
+
+blade:
+  id: 10
+  title: "knife blade"
+  weight: 0.06
+  vendor_sell_price: 0.04
+
+scabbard:
+  id: 11
+  title: "scabbard"
+  weight: 0.05
+  vendor_sell_price: 0.5
+
+ranger_set:
+  id: 12
+  title: "ranger belt knife"
+  weight: 2.0
+  vendor_sell_price: 25
+
+belt:
+  id: 13
+  title: "snakeskin belt"
+  weight: 0.5
+  vendor_sell_price: 5

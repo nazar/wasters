@@ -1,0 +1,13 @@
+- @section = 'quests'
+-box do
+  %h3= :adding_quest.l
+
+  = error_messages_for :quest
+
+  - form_for(:quest, :url => quests_path, :html => {:class => "MainForm"}) do |f|
+    = render :partial => 'form', :locals => {:form => f}
+    %p= submit_tag :create.l
+
+  = link_to :back.l, quests_path
+
+=render :partial => 'quests/behaviour'    

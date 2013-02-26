@@ -1,0 +1,5 @@
+%ul.properties_list
+  =stat_line(:quest_giver.l, (mob.quest_giver ? 'Yes' : 'No'))
+  - if mob.mob_type == Mob::MobTypeMob
+    =stat_line(:mob_difficulty.l, mob.difficulty_to_s.humanize)
+    =stat_line(:mob_hp.l, mob.hp.to_s)

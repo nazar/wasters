@@ -1,0 +1,10 @@
+xml.instruct!
+xml.complete do
+  for group in @quest_groups do
+    if @quest && (@quest.quest_group_id == group.id)
+      xml.option group.name, "value" => group.id, "selected" => true
+    else
+      xml.option group.name, "value" => group.id
+    end
+  end
+end

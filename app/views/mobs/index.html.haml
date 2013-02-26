@@ -1,0 +1,27 @@
+- @meta = { :description => "Fallen Earth Bestiary Database",:keywords => "mob, mobs, bestiary, merchants, NPC, NPCs, database, fallen earth"}
+- @section = 'mobs'
+
+#yui-main
+  .yui-b
+    -box do
+      %h3
+        = :mob_db.l
+        %ul.subnav
+          %li= link_to :add_mob.l, new_mob_path
+
+        -#      %p.subtitle
+        -#        = feed_icon_tag :recent_mobs.l, all_mobs_path(:format => 'rss')
+        -#        = number_with_delimiter(Mob.count)
+        -#        = :mobs.l
+
+      -alphabet_filter(Mob.mob_alphabet) do |letter, cnt|
+        -link_to(letter, mob_filter_path(letter), :title => pluralize(cnt, 'Mob'))  
+
+      = my_will_paginate @mobs, :show_info => false
+      = render :partial => 'mobs/mobs_table', :locals => {:mobs => @mobs}
+      = my_will_paginate @mobs
+
+.yui-b
+  -box do
+    %h3 &nbsp
+    =render :partial => 'mobs/filters_box'

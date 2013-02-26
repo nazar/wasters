@@ -1,0 +1,5 @@
+<div id="weapon_sub_select">
+  <%= select_tag('item[item_stat_weapon_attributes][weapon_subtype]',
+                 options_for_select(weapon_sub_type_options_for(weapon_type)),
+                 :id => 'item_item_stat_weapon_attributes_weapon_subtype') %>
+</div>

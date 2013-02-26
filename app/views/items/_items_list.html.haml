@@ -1,0 +1,8 @@
+- for item in items
+  %dl.vcard
+    %dt.photo
+      - unless item.icon_file_name.blank?
+        = link_to(image_tag(item.icon.url, :width => '50', :height => '50'), item_path(item))
+    %dd.fn= link_to item.title, item_path(item)
+    %dd
+      = truncate_words(item.description, 10,  '...') 

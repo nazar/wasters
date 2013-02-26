@@ -1,0 +1,13 @@
+-@section = 'mobs'
+-box do
+  %h3=:editing_mob.l
+
+  = error_messages_for :mob
+
+  - form_for(@mob, :html => {:class => "MainForm"}) do |f|
+    = render :partial => 'form', :locals => {:f => f}
+    %p= submit_tag :update.l
+
+  = link_to :back.l, mob_path(@mob)
+
+=render :partial => 'mobs/behaviour'

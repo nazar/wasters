@@ -1,0 +1,10 @@
+-qty_desc ||= 'Quantity'
+%table{:id => table_id ||= 'item_links', :class => 'item_links'}
+  %tr.head
+    %th Item
+    %th.sortfirstasc=qty_desc
+  -for item in item_links
+    %tr
+      %td=link_to item.link.title, item_path(item.link_id)
+      %td=item.qty
+=javascript_tag("SortableTable.init('#{table_id}');")

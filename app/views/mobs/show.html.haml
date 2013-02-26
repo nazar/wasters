@@ -1,0 +1,55 @@
+- @meta = { :description => "Fallen Earth Mobs Database",:keywords => "mob, mobs, NPC, merchant, mob drops"}
+- @section = 'mobs'
+
+#yui-main
+  .yui-b
+    -box :class => "hfeed" do
+      %h2=h(@mob.name)
+
+      %h3=:mob_description.l
+      =@mob.description
+
+      -if @mob.mob_type == Mob::MobTypeMob
+        -unless @drops.blank? && @skins.blank?
+          %div#items-tabs
+            %ul
+              %li=link_to "#{:mob_drops.l} (#{@drops.length})", '#tab-drops' unless @drops.blank?
+              %li=link_to "#{:mob_skins.l} (#{@skins.length})", '#tab-skins' unless @skins.blank?
+            -unless @drops.blank?
+              %div#tab-drops
+                =render :partial => 'mob_items/mob_items_table', :locals => {:mob_items => @drops, :table_id => 'drops_table'}
+            -unless @skins.blank?
+              %div#tab-skins
+                =render :partial => 'mob_items/mob_items_table', :locals => {:mob_items => @skins, :table_id => 'skins_table'}
+          =javascript_tag "(function($){ $('#items-tabs').tabs(); })(jQuery);"       
+      -else
+        %h3="#{@mob.mob_items_verb.capitalize} Items"
+        =render :partial => 'mob_items/mob_items_table', :locals => {:mob_items => @mob_items, :qty_desc => @mob.mob_qty_name.capitalize}
+
+    = render :partial => 'shared/object_comments', :locals => {:commentable => @mob}
+
+.yui-b
+  -box do
+    %h3.signup=:have_something_to_contribute.l
+    -box :class => 'alt' do
+      %h3=link_to 'Edit Mob', edit_mob_path(@mob)
+      %h3=link_to 'New Mob', new_mob_path
+      = render :partial => 'shared/signup_block'
+
+    -box :class => 'alt' do
+      =mob_properties(@mob)
+
+    -unless @quests_given.blank?
+      -box :class => 'alt' do
+        %h3 Gives Following Quests
+        =list_quests(@quests_given)
+
+
+    -box :class => 'alt' do
+      =mob_mob_properties(@mob)
+    - unless @mob.cached_tag_list.blank?
+      =render :partial => 'tags/tag_box', :locals => {:tags => @mob.tag_counts}
+      
+    -box :class => 'alt' do
+      %h3=:mob_stats.l
+      =render :partial => 'mobs/stats', :locals => {:mob => @mob}    

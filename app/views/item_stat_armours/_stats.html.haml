@@ -1,0 +1,23 @@
+%h3 Slots
+= armour_slot_links(stat)
+%br
+%br
+%h3=:primary_resists.l
+%ul.properties_list
+  =stat_line(:ballistic.l, stat.ballistic)
+  =stat_line(:crushing.l, stat.crushing)
+  =stat_line(:piercing.l, stat.piercing)
+  =stat_line(:slashing.l, stat.slashing)
+%h3=:secondary_resists.l
+%ul.properties_list
+  =stat_line(:cold.l, stat.cold)
+  =stat_line(:fire.l, stat.fire)
+%h3=:tertiary_resists.l
+%ul.properties_list
+  =stat_line(:acid.l, stat.acid)
+  =stat_line(:disease.l, stat.disease)
+  =stat_line(:electric.l, stat.electric)
+  =stat_line(:radiation.l, stat.radiation)
+  =stat_line(:poison.l, stat.poison)
+  =stat_line(:psionic.l, stat.psionic)
+  =stat_line(:sonic.l, stat.sonic)

@@ -1,0 +1,170 @@
+en:
+  date:
+    formats:
+      published_date: "%d/%m/%Y"
+      date_ago: "%b %Y"
+
+  time:
+    formats:
+      published_date: "%d/%m/%Y"
+      short_published_date: "%d/%m/%Y"
+      literal_date: "%B %d, %Y"
+      short_literal_date: "%b %d, %Y"
+      time_ago: "%l:%M%p"
+
+  activerecord:
+    attributes:
+      photo:
+        created_at: "created at: "
+
+  #site wide
+  tag_list: Tag List
+
+  #en: people: People
+  people: Wastelanders
+
+  #status
+  viewed: Viewed
+  created: Created
+  updated: Updated
+  comments: Comments
+  updated_by: Updated by
+  added_by: Added by
+
+  #quests
+  quests: Quests
+  quest_db: Fallen Earth Quest Database
+  quests_database: Quests Database 
+  quest_chains: Quest Chains
+  recent_quests: Recent Quests
+  latest_quests: Latest Quests
+  updated_quests: Recently Updated Quests
+  add_quests: Add Quest
+  adding_quest: Adding Quest
+  quest_level: Quest Level
+  quest_sector: Sector
+  quest_group: Quest Group
+  quest_position: Quest Group Position
+  added_quest: Added Quest
+  editing_quest: Editing Quest
+  quest_description: Description
+  quest_objective: Objectives
+  previous_quest: Previous Quest
+  quest_stats: Quest Stats
+  quest_chain: Quest Chain
+  quest_information: Quest Information
+  all_quests_tagged: "All Quests tagged {{tag_name}}"
+  ap: AP
+  chips: Chips
+  experience: Exprience
+  faction_type: Faction Type
+  faction: Faction
+  quest_rewards: Quest Rewards
+  quest_item_rewards: Quest Item Rewards
+  quest_items: Quest Items
+  add_quest_item: Add Quest Item
+  quest_handin: Hand in
+  quest_reward: Reward
+  quest_giver: Quest Giver
+  by_zone: By Zone
+  by_sector: By Sector
+  by_faction: By Faction
+
+  #items db
+  item_db: Fallen Earth Item Database
+  items_database: Items Database
+  add_item: Add Item
+  item_details: Item Details
+  adding_item: Adding Item
+  item_properties: Item Properties
+  base_properties: Base Properties
+  item_level: Level
+  item_condition: Condition
+  min_condition: Min Cond
+  item_schematics: Schematics
+  item_weight: Weight
+  item_description: Description
+  item_stats: Statistics
+  item_comments: Comments
+  added_item: Added Item
+  editing_item: Editing Item
+  item_category: Category
+  item_sources: Item Sources
+  all_item_tagged: "All Items Tagged {{tag_name}}"
+  item_filters: Items Filter
+  sub_filter: Sub Filter
+  item_cost: Buy Cost
+  item_sell_cost: Sell Price
+  non_tradable: Can Trade
+  quest_item: Quest Item
+  crafting_time: Craft Time
+  requirements: Requirement
+  not_selleable: Not Sellable
+  sellable: Can Sell
+  attunes: Attunes?
+
+  #item stats (armour, weapon)
+  armour_properties: Armour properties
+  weapon_properties: Weapon properties
+  item_requirements: Ability Requirements
+  skills_requirement: Skill Requirements
+  weapon_damage: Weapon Damage
+  slot: Slot
+  primary_resists: Primary Resists
+  secondary_resists: Secondary Resists
+  tertiary_resists: Tertiary Resists
+  slashing: Slashing
+  piercing: Piercing
+  crushing: Crushing
+  ballistic: Ballistic
+  fire: Fire
+  cold: Cold
+  acid: Acid
+  radiation: Radiation
+  poison: Poison
+  sonic: Sonic
+  electric: Electric
+  psionic: Psionic
+  disease: Disease
+
+  weapon_type: Category
+  type: Type
+  sub_type: Sub Type
+  damage: Damage
+  ammo_item: Ammo
+  properties: Properties
+  ammo: Ammo
+  ammo_size: Ammo Size
+  dps: DPS
+  delay: Delay
+  reload_stat: Reload
+  max_range: Max Range
+
+  #mobs
+  mob_db: Mob Database
+  mobs_database: Mobs Database
+  add_mob: Add a Mob
+  recent_mobs: Recent Mobs
+  mobs: Mobs
+  viewing_all_mobs: Viewing all Mobs
+  adding_mob: Adding Mob
+  mob_difficulty: Difficulty
+  mob_hp: HP
+  mob_description: Description
+  mob_drops: Mob Drops
+  mob_skins: Mob Skins
+  mob_stats: Statistics
+  all_mobs_tagged: "All Mobs Tagged {{tag_name}}"
+  mob_type: Mob Type
+  mob_filters: By Type
+  by_difficulty: By Difficulty
+  editing_mob: Editing Mob
+  merchants: Merchants
+  nodes: Nodes
+  mines: Mines
+  coords_x: X Coords
+  coords_y: Y Coords
+  quick_coords: Quick Coordinates
+
+  #comments
+  latest_comments: Latest Comments

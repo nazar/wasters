@@ -1,0 +1,12 @@
+%fieldset
+  %legend="#{verb.pluralize.capitalize} for Items"
+
+  -qty_desc ||= 'Qty'
+  %table{:class => "list_items_properties", :cellpadding => 0, :cellspacing => 0}
+    %tr
+      %th Item
+      %th=qty_desc
+    - for item_link in item_links
+      = render :partial => 'item_links/edit_verb', :locals => {:item_link => item_link, :verb => verb}
+    %tr{:id => "#{verb}_last_row"}  
+  %p= link_to "Add #{verb.capitalize} Item", item_links_path(verb), :id => "add_#{verb}"

@@ -1,0 +1,12 @@
+%h3=:weapon_properties.l
+%ul.properties_list
+  =stat_line(:slot.l, stat.slot_to_s.humanize)
+  =stat_line(:weapon_type.l, link_to(stat.weapon_type_to_s.humanize, item_cat_sub_path(@item.category, stat.weapon_type)))
+  =stat_line(:sub_type.l, link_to(stat.sub_type_to_s.humanize, item_cat_sub_type_path(@item.category, stat.weapon_type, stat.weapon_subtype)))
+  - unless stat.ammo_item.nil?
+    =stat_line(:ammo.l, link_to(stat.ammo_item.title, item_path(stat.ammo_item)))
+    =stat_line(:ammo_size.l, stat.ammo)
+  =stat_line(:dps.l, stat.dps)
+  =stat_line(:delay.l, stat.delay)
+  =stat_line(:reload_stat.l, stat.reload_stat)
+  =stat_line(:max_range.l, stat.max_range)

@@ -1,0 +1,4 @@
+%tr{:id => "#{verb}_#{mob_item.id}"}
+  %td=items_ajax_box("#{verb}[#{mob_item.id}][item_id]", mob_item.item_id, mob_item.item_title)
+  %td=text_field_tag "#{verb}[#{mob_item.id}][quantity]", mob_item.quantity
+  %td=select_tag "#{verb}[#{mob_item.id}][frequency]", options_for_select(order_key_value_hash(MobItem.frequency_types), mob_item.frequency)

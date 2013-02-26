@@ -1,0 +1,4 @@
+This is NOT paginating_find.
+
+Paginating_find was removed from this plugin directory and replaced with stubs that will redirect pagination_find calls
+to will_paginate

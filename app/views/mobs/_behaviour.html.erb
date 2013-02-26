@@ -1,0 +1,8 @@
+<% javascript_tag do -%>
+  jQuery('#mob_mob_type').attach(RemoteGetMobPropertiesForm, {update: '#mob_properties'});
+  jQuery('a#add_drop').attach(RemoteGetAndInsertBefore, {before: '#drop_last_row'});
+  jQuery('a#add_skin').attach(RemoteGetAndInsertBefore, {before: '#skin_last_row'});
+  jQuery('a#add_sell').attach(RemoteGetAndInsertBefore, {before: '#sell_last_row'});
+  jQuery('a#add_node').attach(RemoteGetAndInsertBefore, {before: '#node_last_row'});
+  jQuery('a#add_mine').attach(RemoteGetAndInsertBefore, {before: '#mine_last_row'});
+<% end -%>

@@ -1,0 +1,6 @@
+xml.instruct!
+xml.complete @add do
+  for quest in @quests do
+    xml.option quest.title, "value" => quest.id
+  end
+end

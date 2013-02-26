@@ -1,0 +1,13 @@
+<fieldset>
+  <legend>Mob Properties</legend>
+  <%= label :mob, :hp, 'HP' %><%= text_field :mob, :hp %><br/>
+  <%= label :mob, :difficulty %><%= select :mob, :difficulty, mob_difficulties_for_select %><br/>
+</fieldset>
+<fieldset>
+  <legend>Drops</legend>
+  <%= render :partial => 'mobs/edit_verbs', :locals => {:mob_items => @drops, :verb => 'drop'} %>
+</fieldset>
+<fieldset>
+  <legend>Skins</legend>
+  <%= render :partial => 'mobs/edit_verbs', :locals => {:mob_items => @skins, :verb => 'skin'} %>
+</fieldset>

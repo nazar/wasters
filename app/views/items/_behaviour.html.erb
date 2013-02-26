@@ -1,0 +1,6 @@
+<% javascript_tag do  %>
+  jQuery('a#add_item').attach(RemoteGetAndInsertBefore, {before: '#items_last_row'});
+  jQuery('a#add_recipe').attach(RemoteGetAndInsertBefore, {before: '#recipe_last_row'});
+  jQuery('#item_cat_select').attach(RemoteGetArmourPropertiesForm, {id_field: '#item_id', update: '#item_stats'});
+  jQuery('#item_item_stat_weapon_attributes_weapon_type').attach(RemoteWepaonChangeGetAndReqObject, {target: '#weapon_sub_select'});  
+<% end -%>

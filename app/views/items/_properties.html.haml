@@ -1,0 +1,13 @@
+%ul.properties_list
+  =stat_line(:item_category.l, link_to(item.category_to_s.humanize, item_cat_path(item.category)))
+  =requirement_line(item)
+  =stat_line(:item_cost.l, item.vendor_sell_price)
+  =stat_line(:item_sell_cost.l, item.vendor_buy_price) 
+  =stat_line(:item_weight.l, item.weight.to_s)
+  =stat_line(:item_level.l, item.level.to_s)
+  =stat_line(:min_condition.l, item.min_condition)
+  =stat_line(:quest_item.l, item.quest_item ? 'Yes' : 'No') if item.quest_item
+  =stat_line(:non_tradable.l, item.non_tradable ? 'No' : 'Yes')
+  =stat_line(:sellable.l, item.not_sold ? 'No' : 'Yes')
+  =stat_line(:attunes.l, item.attunes ? 'Yes' : 'No') if item.attunes
+  =stat_line(:crafting_time.l, "#{item.crafting_time_normal} (#{item.crafting_time_adjuested})") if item.crafting_seconds > 0

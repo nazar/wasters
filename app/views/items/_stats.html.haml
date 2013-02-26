@@ -1,0 +1,8 @@
+%ul.properties_list
+  =stat_line(:created.l, "#{time_ago_in_words(item.created_at)} ago")
+  =stat_line(:added_by.l, link_to(item.user.login, user_path(item.user)))
+  =stat_line(:viewed.l, item.views_count.to_s)
+  =stat_line(:comments.l, item.comments_count.to_s)  if item.comments_count.to_i > 0
+  - unless item.updater.blank?
+    =stat_line(:updated.l, "#{time_ago_in_words(item.updated_at)} ago")
+    =stat_line(:updated_by.l, link_to(item.updater.login, user_path(item.updater))) 

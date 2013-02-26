@@ -1,0 +1,5 @@
+- for mob in mobs
+  %dl.vcard
+    %dd.fn= link_to mob.name, mob_path(mob)
+    %dd
+      = truncate_words(mob.description, 10,  '...') 

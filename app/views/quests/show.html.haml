@@ -1,0 +1,58 @@
+- @meta = { :description => "Fallen Earth Quests Database",:keywords => "quests, quest, database, fallen earth"}
+- @section = 'quests'
+
+#yui-main
+  .yui-b
+    -box :class => "hfeed" do
+      %h2=h(@quest.title)
+      =render :partial => 'quests/quest_block', :locals => {:quest => @quest}
+
+      -unless @handins.blank? && @rewards.blank?
+        %h3=:quest_items.l
+        %div#items-tabs
+          %ul
+            %li=link_to "#{:quest_handin.l} (#{@handins.length})", '#tab-handin' unless @handins.blank?
+            %li=link_to "#{:quest_reward.l} (#{@rewards.length})", '#tab-reward' unless @rewards.blank?
+          -unless @handins.blank?
+            %div#tab-handin
+              =render :partial => 'quest_items/quest_items_table', :locals => {:quest_items => @handins, :table_id => 'handin_table'}
+          -unless @rewards.blank?
+            %div#tab-reward
+              =render :partial => 'quest_items/quest_items_table', :locals => {:quest_items => @rewards, :table_id => 'reward_table'}
+        =javascript_tag "(function($){ $('#items-tabs').tabs(); })(jQuery);"
+
+    = render :partial => 'shared/object_comments', :locals => {:commentable => @quest}
+
+.yui-b
+  -box do
+    %h3.signup=:have_something_to_contribute.l
+    -box :class => 'alt' do
+      %h3=link_to 'Edit Quest', edit_quest_path(@quest)
+      %h3=link_to 'New Quest', new_quest_path
+      = render :partial => 'shared/signup_block'
+
+    -unless @quest_chain.blank?
+      -box :class => 'alt' do
+        %h3=:quest_chain.l
+        %ul.quest_chain_list
+          -for quest in @quest_chain
+            %li=quest_chain_link(@quest, quest)
+    -box :class => 'alt' do
+      %h3=:quest_information.l
+      =render :partial => 'quests/info', :locals => {:quest => @quest}
+    -box :class => 'alt' do
+      %h3=:quest_rewards.l
+      =render :partial => 'quests/rewards', :locals => {:quest => @quest}
+    - unless @handins.blank?
+      -box :class => 'alt' do
+        %h3 Item Handing
+        =render :partial => 'quest_items/list', :locals => {:items => @handins}
+    - unless @rewards.blank?
+      -box :class => 'alt' do
+        %h3 Item Rewards
+        =render :partial => 'quest_items/list', :locals => {:items => @rewards}
+    - unless @quest.cached_tag_list.blank?
+      =render :partial => 'tags/tag_box', :locals => {:tags => @quest.tag_counts}
+    -box :class => 'alt' do
+      %h3=:quest_stats.l
+      =render :partial => 'quests/stats', :locals => {:quest => @quest}

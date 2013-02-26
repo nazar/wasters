@@ -1,0 +1,8 @@
+%ul.properties_list
+  =stat_line(:created.l, "#{time_ago_in_words(quest.created_at)} ago")
+  =stat_line(:added_by.l, link_to(quest.user.login, user_path(quest.user)))
+  =stat_line(:viewed.l, quest.views_count.to_s)
+  =stat_line(:comments.l, quest.comments_count.to_s) if quest.comments_count.to_i > 0
+  - unless quest.updater.blank?
+    =stat_line(:updated_by.l, link_to(quest.updater.login, user_path(quest.updater)))
+    =stat_line(:updated.l, "#{time_ago_in_words(quest.updated_at)} ago")

@@ -1,0 +1,32 @@
+<fieldset>
+  <legend>Mob / Merchant / Node / Mine Properties</legend>
+  <%= f.label :name, 'Name' %><%= f.text_field :name %><br/>
+</fieldset>
+<fieldset>
+  <legend>Description</legend>
+  <%= f.text_area 'description', :rows => 8 %>
+
+  <div style="padding: 10px 0 0 4px;">
+    <%= (f.check_box :quest_giver) << ' ' << :quest_giver.l %>
+  </div>
+  
+  <table>
+    <tr valign="top">
+      <td>
+        <%= label_tag :coords_x, :coords_x.l %>
+        <%= f.text_field :coords_x, :size => 10 %>
+        <%= label_tag :coords_y, :coords_y.l %>
+        <%= f.text_field :coords_y, :size => 10 %>
+      </td>
+      <td>
+        <%= label_tag :quick_coords, :quick_coords.l %>
+        <%= text_field_tag 'quick_coords', '', :size => 40 %>
+      </td>
+    </tr>
+  </table>
+
+  <%= label_tag :tags, :tags.l %>
+  <%= f.text_field :tag_list %> <em>comma separated keywords to additionally categorise this entry </em>
+  <%= f.label :mob_type %><%= f.select :mob_type, mob_types_for_select, :id => 'mob_type' %>
+</fieldset>
+<%= render :partial => 'mobs/mob_properties' %>

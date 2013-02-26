@@ -1,0 +1,31 @@
+- @meta = { :description => "Fallen Earth Items Database",:keywords => "item, items, schemetics, recipe, schematic, database, fallen earth"}
+- @section = 'items'
+
+#yui-main
+  .yui-b
+    -box do
+      %h3
+        = "Filter: #{@filter}"
+        %ul.subnav
+          %li= link_to :add_item.l, new_item_path
+
+      = my_will_paginate @items, :show_info => false
+
+      - if [Item::ItemCatWeapon, Item::ItemCatArmour].include?(@cat)
+        = render :partial => 'items/items_weapon_table', :locals => {:items => @items, :item_columns => cat_columns(@cat, @sub, @type)}
+      - else
+        = render :partial => 'items/items_table', :locals => {:items => @items}
+
+      = my_will_paginate @items    
+
+.yui-b
+  -box do
+    %h3 &nbsp
+    -box :class => 'alt' do
+      %h3=:item_filters.l
+      =item_type_links(@cat)
+      =javascript_tag("( function($) {$('#item_categories').tree(tree_settings); } )(jQuery);")
+    -unless (type_links = item_sub_type_links(@cat, @sub, @type)).blank?
+      -box :class => 'alt' do
+        %h3=:sub_filter.l
+        =type_links

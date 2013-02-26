@@ -1,0 +1,9 @@
+%table#quest_items{:cellspacing => 0, :cellpadding => 0}
+  %tr
+    %th Item
+    %th Link Type
+    %th Qty
+  - quest_items.each do |quest_item|
+    = render :partial => 'quest_items/quest_item_row', :locals => {:quest_item => quest_item }
+  %tr#last_row &nbsp
+%p= link_to :add_quest_item.l, quest_item_path, :id => 'add_item'

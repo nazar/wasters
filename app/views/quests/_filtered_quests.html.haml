@@ -1,0 +1,19 @@
+- @meta = { :description => "Fallen Earth Quests Database",:keywords => "quests, quest, database, fallen earth"}
+- @section = 'quests'
+
+#yui-main
+  .yui-b
+    -box do
+      %h3
+        = :quest_db.l
+        %ul.subnav
+          %li= link_to :add_quests.l, new_quest_path
+
+      = my_will_paginate @quests, :show_info => false
+      = render :partial => 'quests/quests_table', :locals => {:quests => @quests}
+      = my_will_paginate @quests
+
+.yui-b
+  -box do
+    %h3 Quest Filters
+    =render :partial => 'quests/filters_box'

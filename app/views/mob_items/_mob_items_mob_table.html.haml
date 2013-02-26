@@ -1,0 +1,10 @@
+-qty_desc ||= 'Quantity'
+%table{:id => table_id ||= 'mob_items', :class => 'mob_items'}
+  %tr.head
+    %th.sortfirstasc Name
+    %th=qty_desc
+  -for mob in mobs
+    %tr
+      %td=link_to mob.title, mob_path(mob)
+      %td=mob.quantity
+=javascript_tag("SortableTable.init('#{table_id}');")

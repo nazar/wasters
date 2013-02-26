@@ -1,0 +1,63 @@
+<table width='100%'>
+  <tr>
+    <td>
+      <fieldset>
+        <legend><%= :item_details.l %></legend>
+        <%= label_tag :title %>
+        <%= form.text_field :title %>
+
+        <%= label_tag :icon %>
+        <%= form.file_field :icon %>
+
+        <%= label_tag :description_body, :quest_description.l %>
+        <%= form.text_area :description, :rows => 8 %>
+
+        <%= label_tag :quest_item, (form.check_box :quest_item) <<' '<< :quest_item.l  %>
+
+
+        <%= label_tag :non_tradable, (form.check_box :non_tradable) << ' ' << 'No Trade' %>
+        <%= label_tag :not_selleable, (form.check_box :not_sold) << ' ' << :not_selleable.l %>
+        <%= label_tag :attunes, (form.check_box :attunes) << ' ' << :attunes.l %>
+
+        <%= label_tag :tags, :tags.l %>
+        <%= form.text_field :tag_list %> <em>comma separated keywords to additionally categorise this quest </em>
+        
+        <%= label_tag :item_category.l %>
+        <%= category_select(@item) %>
+      </fieldset>
+    </td>
+    <td>
+      <fieldset class="properties">
+        <legend><%= :item_properties.l %></legend>
+        <%= label_tag :item_cost.l %>
+        <%= form.text_field :vendor_sell_price %>
+        <%= label_tag :item_sell_cost.l %>
+        <%= form.text_field :vendor_buy_price %>
+        <%= label_tag :item_weight.l %>
+        <%= form.text_field :weight %>
+        <%= label_tag :item_level.l %>
+        <%= form.text_field :level %>
+        <%= label_tag :min_condition.l %>
+        <%= form.text_field :min_condition %>
+        <%= label_tag :requirements.l %>
+        <%= form.select :requirement_id, requirement_select(@item) %>
+        Level <%= form.text_field :requirement_level %>
+      </fieldset>
+    </td>
+  </tr>
+</table>
+
+<div id="item_stats">
+  <%= item_stats_by_category(@item, @recipe_item_links) %>
+</div>
+
+<fieldset class="properties">
+  <legend><%= :crafting_time.l %></legend>
+  <%= (form.text_field :craft_time_h) << ' Hours ' << (form.text_field :craft_time_m) << ' Minutes ' << (form.text_field :craft_time_s) << ' Seconds' %> 
+</fieldset>
+
+<fieldset class="schematics">
+  <legend><%= :item_schematics.l %></legend>
+  <%= render :partial => 'items/form_schematics', :locals => {:schematics => @schematics} %>
+</fieldset>
+<%= hidden_field_tag :item_id, @item.id %>

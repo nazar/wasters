@@ -1,0 +1,23 @@
+%table{:id => table_id ||= 'items_table', :class => 'data_table'}
+  %tr
+    %th{:class => 'sortfirstasc'} Item
+    =item_columns
+    %th.number Level
+    %th.number Weight
+    %th{:title => 'Buy from Vendor Price'} Price
+    %th{:title => 'Minimum Condition'} MCond
+    %th{:title => 'Comments'} CM
+    %th.nosort.actions &nbsp
+  - for item in items
+    %tr
+      %td= link_to h(item.title), item_path(item)
+      =item_cat_rows(item, @cat, @sub, @type)
+      %td= item.level
+      %td= item.weight
+      %td= item.vendor_sell_price
+      %td= item.min_condition
+      %td= item.comments_count
+      %td.actions= item_icons(item)
+
+= javascript_tag "SortableTable.init('#{table_id}');"
+

@@ -1,0 +1,28 @@
+- @meta = { :description => "Fallen Earth Quests Database",:keywords => "quests, quest, database, fallen earth"}
+- @section = 'quests'
+
+#yui-main
+  .yui-b
+    -box do
+      %h3
+        = :quest_db.l
+        %ul.subnav
+          %li= link_to :add_quests.l, new_quest_path
+
+      -#      %p.subtitle
+      -#        = feed_icon_tag :recent_quests.l, all_quests_path(:format => 'rss')
+      -#        = number_with_delimiter(Quest.count)
+      -#        = "#{:quests.l}"
+
+
+      -alphabet_filter(Quest.quest_alphabet) do |letter, cnt|
+        -link_to(letter, quest_filter_path(letter), :title => pluralize(cnt, 'Quest'))
+
+      = my_will_paginate @quests, :show_info => false
+      = render :partial => 'quests/quests_table', :locals => {:quests => @quests}
+      = my_will_paginate @quests
+
+.yui-b
+  -box do
+    %h3 Quest Filters
+    =render :partial => 'quests/filters_box'

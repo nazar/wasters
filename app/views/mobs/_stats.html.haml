@@ -1,0 +1,8 @@
+%ul.properties_list
+  =stat_line(:created.l, "#{time_ago_in_words(mob.created_at)} ago")
+  =stat_line(:added_by.l, link_to(mob.user.login, user_path(mob.user)))
+  =stat_line(:viewed.l, mob.views_count.to_s)
+  =stat_line(:comments.l, mob.comments_count.to_s) if mob.comments_count.to_i > 0
+  - unless mob.updater.blank?
+    =stat_line(:updated_by.l, link_to(mob.updater.login, user_path(mob.updater)))
+    =stat_line(:updated.l, "#{time_ago_in_words(mob.updated_at)} ago")

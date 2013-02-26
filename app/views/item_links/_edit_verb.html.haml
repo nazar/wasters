@@ -1,0 +1,5 @@
+%tr{:id => "#{verb}_#{item_link.id}"}
+  %td=items_ajax_box("#{verb}[#{item_link.id}][link_id]", item_link.link_id, item_link.link_title)
+  %td
+    =text_field_tag "#{verb}[#{item_link.id}][qty]", item_link.qty
+    =hidden_field_tag "#{verb}[#{item_link.id}][link_type]", item_link.link_type 

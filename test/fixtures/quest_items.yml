@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item_id: 1
+  link_type: 1
+  qty: 1.5
+  quest_id: 1
+
+two:
+  item_id: 1
+  link_type: 1
+  qty: 1.5
+  quest_id: 1

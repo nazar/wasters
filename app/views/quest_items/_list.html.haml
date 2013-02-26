@@ -1,0 +1,3 @@
+%ul.properties_list
+  -items.each do |item|
+    %li=link_to item.title, item_path(item.id)

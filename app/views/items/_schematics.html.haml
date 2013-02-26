@@ -1,0 +1,20 @@
+%table.schematics{:cellspacing => 0, :callpadding => 0}
+  %tr.header
+    %th Item
+    %th Quantity
+    %th Level
+    %th Weight
+    %th Cost
+  - sort_schematic_by_item(schematics).each do |data|
+    - item = data.last
+    - unless item[:item].nil?
+      %tr{:class =>  item[:assembley].blank? ? 'bottom' : 'assembley'}
+        %td.title=link_to item[:item].title, item_path(item[:item])
+        %td.info=item[:qty]
+        %td.info=item[:item].level
+        %td.info=item[:wgt]
+        %td.info=item[:cost]
+      - unless item[:assembley].blank?
+        %tr.sub
+          %td{:colspan => 5}
+            = render(:partial => 'items/schematics', :locals => {:schematics => item[:assembley]})

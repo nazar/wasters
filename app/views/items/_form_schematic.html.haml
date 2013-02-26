@@ -1,0 +1,3 @@
+%tr{:id => schematic_id}
+  %td=items_ajax_box("assembley[#{schematic_id}][item_id]", schematic[:item_id], schematic_item_title(schematic))
+  %td=text_field_tag "assembley[#{schematic_id}][qty]", schematic[:qty]
